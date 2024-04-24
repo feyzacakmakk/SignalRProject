@@ -1,0 +1,76 @@
+﻿@model UpdateProductDto
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Ürün İşlemleri</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<form method="post">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">Ürün Güncelleme Sayfası</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="productid">Product ID</label>
+								<input type="text" asp-for="ProductID" class="form-control" id="productid" disabled>
+								<input type="hidden" asp-for="ProductID">
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="productname">Ürün Adını Giriniz</label>
+								<input type="text" asp-for="ProductName" class="form-control" id="productname">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="Price">Ürün Fiyatını Giriniz</label>
+								<input type="text" asp-for="Price" class="form-control" id="Price">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="imageurl">Ürün Görselini Giriniz</label>
+								<input type="text" asp-for="ImageUrl" class="form-control" id="imageurl">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="description">Ürün Açıklamasını Giriniz</label>
+								<input type="text" asp-for="Description" class="form-control" id="description">
+
+							</div>
+
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="productCategory">Ürün Kategorisini Seçiniz</label>
+								@Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.Categories2,new {@class="form-control"})
+
+							</div>
+
+						</div>
+						<div class="card-action">
+							<button class="btn btn-primary">Ürünü Güncelle</button>
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+
+
+		</div>
+	</div>
+</div>

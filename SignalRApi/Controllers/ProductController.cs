@@ -48,7 +48,7 @@ namespace SignalRApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateFeature(CreateProductDto createProductDto)
+        public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
             _productService.TAdd(new Product()
             {
@@ -56,7 +56,8 @@ namespace SignalRApi.Controllers
                 ImageUrl = createProductDto.ImageUrl,
                 Price = createProductDto.Price,
                 ProductName = createProductDto.ProductName,
-                ProductStatus = createProductDto.ProductStatus
+                ProductStatus = createProductDto.ProductStatus,
+                CategoryID=createProductDto.CategoryID
 
             });
 
@@ -64,7 +65,7 @@ namespace SignalRApi.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetByID(id);
@@ -72,7 +73,7 @@ namespace SignalRApi.Controllers
             return Ok("ürün silindi");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetByID(id);
@@ -80,16 +81,17 @@ namespace SignalRApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateFeature(UpdateProductDto updateProductDto)
+        public IActionResult UpdateProduct(UpdateProductDto updateProductDto)
         {
-            _productService.TAdd(new Product()
+            _productService.TUpdate(new Product()
             {
                 ProductID=updateProductDto.ProductID,
                 Description = updateProductDto.Description,
                 ImageUrl = updateProductDto.ImageUrl,
                 Price = updateProductDto.Price,
                 ProductName = updateProductDto.ProductName,
-                ProductStatus = updateProductDto.ProductStatus
+                ProductStatus = updateProductDto.ProductStatus,
+                CategoryID = updateProductDto.CategoryID
 
             });
             return Ok("Ürün güncellendi");
