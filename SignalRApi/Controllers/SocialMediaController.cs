@@ -44,7 +44,7 @@ namespace SignalRApi.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteSocialMedia(int id)
         {
             var value = _socialMediaService.TGetByID(id);
@@ -52,7 +52,7 @@ namespace SignalRApi.Controllers
             return Ok("Sosyal Medya bilgisisilindi");
         }
 
-        [HttpGet("GetSocialMedia")]
+        [HttpGet("{id}")]
         public IActionResult GetSocialMedia(int id)
         {
             var value = _socialMediaService.TGetByID(id);
@@ -62,7 +62,7 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateSocialMedia(UpdateSocialMediaDto updateSocialMediaDto)
         {
-            _socialMediaService.TAdd(new SocialMedia()
+            _socialMediaService.TUpdate(new SocialMedia()
             {
                 SocialMediaID=updateSocialMediaDto.SocialMediaID,
                 Name = updateSocialMediaDto.Name,

@@ -42,7 +42,7 @@ namespace SignalRApi.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var value = _discountService.TGetByID(id);
@@ -50,8 +50,8 @@ namespace SignalRApi.Controllers
             return Ok("İndirim bilgisi silindi");
         }
 
-        [HttpGet("GetDiscount")]
-        public IActionResult GetDistcount(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetDiscount(int id)
         {
             var value = _discountService.TGetByID(id);
             return Ok(value);
@@ -60,7 +60,7 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateDiscount(UpdateDiscountDto updateDiscountDto)
         {
-            _discountService.TAdd(new Discount()
+            _discountService.TUpdate(new Discount()
             {
                 DiscountID=updateDiscountDto.DiscountID,
                 Amount = updateDiscountDto.Amount,

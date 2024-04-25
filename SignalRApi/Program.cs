@@ -4,9 +4,25 @@ using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.Repositories;
 using SignalR.EntityLayer.Entities;
+using SignalRApi.Hubs;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(opt =>
+{
+    //bir tane cors politikasý ekliyorum addpolicy ile
+    //genelde corspolicy olarak adlandýrýlýr
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader() //dýþarýdan gelen herhangi bir baþlýða izin ver
+        .AllowAnyMethod() //dýþarýdan gelen herhangi bir metota izin ver
+        .SetIsOriginAllowed((host) => true) 
+        //dýþarýdan gelen herhangi bir kaynaða izin ver
+        .AllowCredentials(); //dýþarýdan gelen herhangi bir kimliðe izin ver
+    });
+});
+builder.Services.AddSignalR();
 
 // Add services to the container.
 //Registration Ýþlemi start
@@ -24,6 +40,9 @@ builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
 builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
+
+builder.Services.AddScoped<IDiscountService, DiscountManager>();
+builder.Services.AddScoped<IDiscountDal, EfDiscountDal>();
 
 builder.Services.AddScoped<IFeatureService, FeatureManager>();
 builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
@@ -55,10 +74,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<SignalRHub>("/signalrhub");
 
 app.Run();
