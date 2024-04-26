@@ -33,7 +33,6 @@ namespace SignalRApi.Controllers
         {
             _socialMediaService.TAdd(new SocialMedia()
             {
-                Name = createSocialMediaDto.Name,
                 Icon = createSocialMediaDto.Icon,
                 Title = createSocialMediaDto.Title,
                 Url = createSocialMediaDto.Url
@@ -65,7 +64,6 @@ namespace SignalRApi.Controllers
             _socialMediaService.TUpdate(new SocialMedia()
             {
                 SocialMediaID=updateSocialMediaDto.SocialMediaID,
-                Name = updateSocialMediaDto.Name,
                 Icon = updateSocialMediaDto.Icon,
                 Title = updateSocialMediaDto.Title,
                 Url = updateSocialMediaDto.Url

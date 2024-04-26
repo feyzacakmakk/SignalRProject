@@ -29,11 +29,12 @@ namespace SignalRWebUI.Controllers
 			return View();
         }
 
-        [HttpGet]
+		[HttpGet]
         public IActionResult CreateCategory()
         {
             return View();
         }
+
 
         [HttpPost]
 		public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)

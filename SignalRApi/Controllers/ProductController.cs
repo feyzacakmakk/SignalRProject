@@ -23,7 +23,9 @@ namespace SignalRApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+
+
+		[HttpGet]
         public IActionResult ProductList()
         {
             var values = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll());
@@ -96,5 +98,49 @@ namespace SignalRApi.Controllers
             });
             return Ok("Ürün güncellendi");
         }
-    }
+
+		[HttpGet("ProductCount")]
+		public IActionResult ProductCount()
+		{
+			return Ok(_productService.TProductCount());
+		}
+
+		[HttpGet("ProductPriceAvg")]
+		public IActionResult ProductPriceAvg()
+		{
+			return Ok(_productService.TProductPriceAvg());
+		}
+
+
+		[HttpGet("ProductCountByHamburger")]
+		public IActionResult ProductCountByHamburger()
+		{
+			return Ok(_productService.TProductCountByCategoryNameHamburger());
+		}
+
+		[HttpGet("ProductCountByDrink")]
+		public IActionResult ProductCountByDrink()
+		{
+			return Ok(_productService.TProductCountByCategoryNameDrink());
+		}
+
+		[HttpGet("ProductNameByMinPrice")]
+		public IActionResult ProductNameByMinPrice()
+		{
+			return Ok(_productService.TProductNameByMinPrice());
+		}
+
+		[HttpGet("ProductNameByMaxPrice")]
+		public IActionResult ProductNameByMaxPrice()
+		{
+			return Ok(_productService.TProductNameByMaxPrice());
+		}
+
+		[HttpGet("ProductPriceAvgHamburger")]
+		public IActionResult ProductPriceAvgHamburger()
+		{
+			return Ok(_productService.TProductPriceAvgHamburger());
+		}
+
+	}
 }
