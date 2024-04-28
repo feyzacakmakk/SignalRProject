@@ -1,29 +1,32 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 
 namespace SignalRApi.Hubs
 {
     public class SignalRHub:Hub
     {
-       SignalRContext context=new SignalRContext();
-        //Db'den örnek oluşturdum
+        private readonly ICategoryService _categoryService;
+        private readonly IProductService _productService;
 
-        //Genelde Send denir
-        //Kategori sayısını bize gönderecek olan metot
-        public async Task SendCategoryCount()
+		public SignalRHub(ICategoryService categoryService, IProductService productService)
+		{
+			_categoryService = categoryService;
+			_productService = productService;
+		}
+
+		public async Task SendCategoryCount()
         {
-            var value=context.Categories.Count();
-            //db deki kategori sayısını saydırdım
+            var value = _categoryService.TCategoryCount();
             await Clients.All.SendAsync("ReceiveCategoryCount", value);
-            //Clients -> signalr'ın
-            //Clients.All.SendAsync -> gelen değeri client tarafına gönderecek
-            //ReceiveCategoryCount -> ismi ve değer olarak da value'dan gelen değeri alacak
-
-            //client tarafında SendCategoryCount'u çağırıcam
-            //bu metota invoke ile bu metotu çağır ve bunun içindeki ReceiveCategoryCount'u kullan
-            //bu metota abone olucam ve onun içindeki yapıp kullanıcam
-
 
         }
-    }
+
+		public async Task SendProductCount()
+		{
+			var value2 = _productService.TProductCount();
+			await Clients.All.SendAsync("ReceiveProductCount", value2);
+
+		}
+	}
 }
