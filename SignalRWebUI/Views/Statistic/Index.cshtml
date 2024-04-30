@@ -73,6 +73,25 @@
 					$("#receiveproductnamebyminprice").text(value8);
 				});
 				
+				connection.on("ReceiveProductPriceAvgHamburger", (value9) => {
+					$("#receiveproductpriceavghamburger").text(value9);
+				});
+				
+				connection.on("ReceiveTotalOrderCount", (value9) => {
+					$("#receivetotalordercount").text(value9);
+				});
+
+				connection.on("ReceiveActiveOrderCount", (value10) => {
+					$("#receiveactiveordercount").text(value10);
+				});
+				
+				connection.on("ReceiveLastOrderPrice", (value10) => {
+					$("#receivelastorderprice").text(value10);
+				});
+
+				connection.on("ReceiveTotalMoneyCaseAmount", (value10) => {
+					$("#receivetotalmoneycaseamount").text(value10);
+				});
 			})
 		</script>
 
@@ -271,8 +290,8 @@
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Sales</p>
-											<h4 class="card-title">$ 1,345</h4>
+										<p class="card-category">Hamburger Fiyatı </p>
+									<h4 class="card-title" id="receiveproductpriceavghamburger"></h4>
 										</div>
 									</div>
 								</div>
@@ -285,13 +304,13 @@
 								<div class="row">
 									<div class="col-5">
 										<div class="icon-big text-center">
-											<i class="la la-newspaper-o"></i>
+											<i class="la la-lemon-o"></i>
 										</div>
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Subscribers</p>
-											<h4 class="card-title">1303</h4>
+											<p class="card-category">Toplam Sİpariş</p>
+									<h4 class="card-title" id="receivetotalordercount"></h4>
 										</div>
 									</div>
 								</div>
@@ -304,13 +323,13 @@
 								<div class="row">
 									<div class="col-5">
 										<div class="icon-big text-center">
-											<i class="la la-check-circle"></i>
+											<i class="la la-heart"></i>
 										</div>
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Order</p>
-											<h4 class="card-title">576</h4>
+											<p class="card-category">Aktif Sİpariş</p>
+									<h4 class="card-title" id="receiveactiveordercount"></h4>
 										</div>
 									</div>
 								</div>
@@ -326,13 +345,13 @@
 								<div class="row">
 									<div class="col-5">
 										<div class="icon-big text-center">
-											<i class="la la-users"></i>
+											<i class="la la-beer"></i>
 										</div>
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Visitors</p>
-											<h4 class="card-title">1,294</h4>
+											<p class="card-category">Son Sipariş Tutarı</p>
+									<h4 class="card-title" id="receivelastorderprice"></h4>
 										</div>
 									</div>
 								</div>
@@ -345,13 +364,13 @@
 								<div class="row">
 									<div class="col-5">
 										<div class="icon-big text-center">
-											<i class="la la-bar-chart"></i>
+									<i class="la la-check-circle"></i>
 										</div>
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Sales</p>
-											<h4 class="card-title">$ 1,345</h4>
+											<p class="card-category">Kasadaki Tutar</p>
+									<h4 class="card-title" id="receivetotalmoneycaseamount"></h4>
 										</div>
 									</div>
 								</div>
@@ -369,8 +388,8 @@
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Subscribers</p>
-											<h4 class="card-title">1303</h4>
+											<p class="card-category">Bugünkü Kazanç</p>
+											<h4 class="card-title">125₺</h4>
 										</div>
 									</div>
 								</div>
@@ -383,13 +402,13 @@
 								<div class="row">
 									<div class="col-5">
 										<div class="icon-big text-center">
-											<i class="la la-check-circle"></i>
+											<i class="la la-home"></i>
 										</div>
 									</div>
 									<div class="col-7 d-flex align-items-center">
 										<div class="numbers">
-											<p class="card-category">Order</p>
-											<h4 class="card-title">576</h4>
+											<p class="card-category">Masa Sayısı</p>
+									<h4 class="card-title" id="receivemenutablecount"></h4>
 										</div>
 									</div>
 								</div>
