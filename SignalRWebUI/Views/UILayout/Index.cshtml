@@ -9,11 +9,11 @@
 @await Component.InvokeAsync("_UILayoutHeadPartialComponent")
 
 
-<body class="sub_page">
+<body>
 
    
         <!-- header section strats -->
-        @await Component.InvokeAsync("_UILayoutNavbarPartialComponent")
+    @await Component.InvokeAsync("_UILayoutNavbarPartialComponent")
         <!-- end header section -->
     
 
@@ -22,10 +22,10 @@
     <!-- end book section -->
     <!-- footer section -->
     @await Component.InvokeAsync("_UILayoutFooterPartialComponent")
-    <!-- footer section -->
-    <!-- jQery -->
+        <!-- footer section -->
+        <!-- jQery -->
     @await Component.InvokeAsync("_UILayoutScriptPartialComponent")
-
+    
     <!-- End Google Map -->
 
 </body>
