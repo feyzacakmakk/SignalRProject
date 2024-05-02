@@ -14,5 +14,6 @@
         //Bire çok olduğunu belirtmek için 
 
         public List<OrderDetail>? OrderDetails { get; set; }
+        public List<Basket>? Baskets { get; set; }
     }
 }
