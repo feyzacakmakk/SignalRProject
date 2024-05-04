@@ -131,15 +131,14 @@
 
 
     <script>
-        //alacağı value bizim yukarıda gönderdiğimiz item.ProductID değeri olacak
         function ShowProductId(value) {
-            var id = value; //ürün id'sini burada alıyoruz
+            var id = value; 
             $.ajax({
-                type: 'post', //işlem post işlemmi sırasında olsun
-                data: { item: id }, //verimiz
-                contentType: 'Json',
-                success: function () { //başarılı olursa bu fonksiyon bize dönsün
-                    //alert('Tıkladığınız ürün ID Değeri: ' + id);
+                type: 'post', 
+                url:"/Menu/AddBasket/",
+                data: { ProductID: id }, 
+                contentType: 'json',
+                success: function () { 
                     Swal.fire("Tıkladığınız Ürün ID: "+id, "Seçiminizi yaptınız","success")
                 }
             });
