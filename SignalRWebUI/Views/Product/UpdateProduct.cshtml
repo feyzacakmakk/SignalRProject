@@ -3,7 +3,6 @@
     ViewData["Title"] = "UpdateProduct";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-
 <div class="content">
 	<div class="container-fluid">
 		<h4 class="page-title">Ürün İşlemleri</h4>
@@ -59,18 +58,13 @@
 								@Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.Categories2,new {@class="form-control"})
 
 							</div>
-
 						</div>
 						<div class="card-action">
 							<button class="btn btn-primary">Ürünü Güncelle</button>
 						</div>
 					</div>
 				</form>
-
-
 			</div>
-
-
 		</div>
 	</div>
 </div>

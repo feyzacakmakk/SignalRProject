@@ -11,15 +11,24 @@ namespace SignalRApi.Hubs
         private readonly IOrderService _orderService;
         private readonly IMoneyCaseService _moneyCaseService;
         private readonly IMenuTableService _menusTableService;
+        private readonly IBookingService _bookingService;
 
-		public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, IMenuTableService menuTableService)
+		public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, IMenuTableService menuTableService, IBookingService bookingService)
 		{
 			_categoryService = categoryService;
 			_productService = productService;
 			_orderService = orderService;
 			_moneyCaseService = moneyCaseService;
 			_menusTableService = menuTableService;
+			_bookingService = bookingService;
 		}
+
+		public async Task SendBookingList()
+		{
+			var values=_bookingService.TGetListAll();
+			await Clients.All.SendAsync("ReceiveBookingList", values);
+		}
+
 
 		public async Task SendProgress()
 		{
