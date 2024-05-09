@@ -11,22 +11,14 @@
 
 <body>
 
-   
-        <!-- header section strats -->
     @await Component.InvokeAsync("_UILayoutNavbarPartialComponent")
-        <!-- end header section -->
-    
 
-    <!-- book section -->
     @RenderBody()
-    <!-- end book section -->
-    <!-- footer section -->
+
     @await Component.InvokeAsync("_UILayoutFooterPartialComponent")
-        <!-- footer section -->
-        <!-- jQery -->
+
     @await Component.InvokeAsync("_UILayoutScriptPartialComponent")
     
-    <!-- End Google Map -->
 
 </body>
 
