@@ -12,8 +12,15 @@ namespace SignalR.DataAccessLayer.EntityFramework
 {
     public class EfBookingDal : GenericRepository<Booking>, IBookingDal
     {
+		private readonly SignalRContext _context;
         public EfBookingDal(SignalRContext context) : base(context)
         {
+			_context = context;
         }
-    }
+
+		public int BookingCount()
+		{
+			return _context.Bookings.Count();
+		}
+	}
 }

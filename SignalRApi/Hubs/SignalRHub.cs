@@ -42,6 +42,9 @@ namespace SignalRApi.Hubs
 		{
 			var values=_bookingService.TGetListAll();
 			await Clients.All.SendAsync("ReceiveBookingList", values);
+
+			var values2 = _bookingService.TBookingCount();
+			await Clients.All.SendAsync("ReceiveBookingListCount", values2);
 		}
 
 

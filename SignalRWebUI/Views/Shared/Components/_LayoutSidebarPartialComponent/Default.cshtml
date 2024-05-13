@@ -1,5 +1,50 @@
-﻿<div class="sidebar">
+﻿
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<div class="sidebar">
 	<div class="scrollbar-inner sidebar-wrapper">
+
+		<script type="text/javascript">
+			$(document).ready(() => {
+				var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7210/SignalRHub").build();
+
+				$("#connstatus").text(connection.state);
+
+
+				connection.start().then(() => {
+					$("#connstatus").text(connection.state);
+
+					setInterval(() => {
+						connection.invoke("SendStatistic");
+						connection.invoke("SendBookingList");
+						//metota istekte bulundum
+					}, 1000);
+
+					
+
+				}).catch((err) => { console.log(err) });
+
+
+
+
+				//istekte bulunduktan sonra connection.on ilie metotun içindeki key'e istekte bulunuyorum
+				connection.on("ReceiveCategoryCount", (value) => {
+					$("#categorycount").text(value);
+				});
+				
+				connection.on("ReceiveProductCount", (value) => {
+					$("#productcount").text(value);
+				});
+				
+				connection.on("ReceiveBookingListCount", (value) => {
+					$("#bookingcount").text(value);
+				});
+			})
+		</script>
 		<div class="user">
 			<div class="photo">
 				<img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile.jpg">
@@ -54,23 +99,26 @@
 				<a href="/Category/Index">
 					<i class="la la-keyboard-o"></i>
 					<p>Kategoriler</p>
-					<span class="badge badge-count">@TempData["categoryCount"]</span>
+					@* <span class="badge badge-count">@TempData["categoryCount"]</span> *@
+					<span class="badge badge-count" id="categorycount"></span>
 				</a>
 			</li>
-			<li class="nav-item active">
+			<li class="nav-item">
 				<a href="/Product/Index/">
-					<i class="la la-th"></i>
+					<i class="la la-birthday-cake"></i>
 					<p>Ürünler</p>
-					<span class="badge badge-count">@TempData["ProductCount"]</span>
+					<span class="badge badge-count" id="productcount"></span>
+					@* <span class="badge badge-count">@TempData["ProductCount"]</span> *@
 				</a>
 			</li>
 			<li class="nav-item">
 				<a href="/Booking/Index/">
 					<i class="la la-bell"></i>
 					<p>Rezervasyonlar</p>
+					<span class="badge badge-count" id="bookingcount"></span>
 				</a>
 			</li>
-			<li class="nav-item">
+			@* <li class="nav-item">
 				<a href="/About/Index/">
 					<i class="la la-font"></i>
 					<p>Hakkımızda</p>
@@ -118,7 +166,7 @@
 					<i class="la la-fonticons"></i>
 					<p>Çıkış Yap</p>
 				</a>
-			</li>
+			</li> *@
 		</ul>
 	</div>
 </div>
