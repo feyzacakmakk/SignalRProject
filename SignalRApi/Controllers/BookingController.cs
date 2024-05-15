@@ -70,5 +70,19 @@ namespace SignalRApi.Controllers
             var value = _bookingService.TGetByID(id);
             return Ok(value);
         }
-    }
+
+        [HttpGet("BookingStatusApproved/{id}")]
+        public IActionResult BookingStatusApproved(int id)
+        {
+            _bookingService.TBookingStatusApproved(id);
+            return Ok("Rezervasyon açıklaması değiştirildi.");
+        }
+
+		[HttpGet("BookingStatusCancaled/{id}")]
+		public IActionResult BookingStatusCancaled(int id)
+		{
+			_bookingService.TBookingStatusCancaled(id);
+			return Ok("Rezervasyon açıklaması değiştirildi.");
+		}
+	}
 }

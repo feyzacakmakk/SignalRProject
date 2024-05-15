@@ -22,5 +22,19 @@ namespace SignalR.DataAccessLayer.EntityFramework
 		{
 			return _context.Bookings.Count();
 		}
+
+		public void BookingStatusApproved(int id)
+		{
+			var values=_context.Bookings.Find(id);
+			values.Description = "Rezervasyon Onaylandı.";
+			_context.SaveChanges();
+		}
+
+		public void BookingStatusCancaled(int id)
+		{
+			var values = _context.Bookings.Find(id);
+			values.Description = "Rezervasyon İptal Edildi.";
+			_context.SaveChanges();
+		}
 	}
 }

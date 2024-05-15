@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SignalRWebUI.Dtos.BookingDtos;
 using System.Text;
 
@@ -43,7 +44,7 @@ namespace SignalRWebUI.Controllers
 			//istemci oluşturuyorum
 			var jsonData = JsonConvert.SerializeObject(createBookingDto);
 			//parametreden gelen değeri selilize ediyorum
-			StringContent stringContent = new StringContent(jsonData,Encoding.UTF8, "application/json");
+			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 			var responseMessage = await client.PostAsync("https://localhost:7210/api/Booking/", stringContent);
 			if (responseMessage.IsSuccessStatusCode)
 			{
@@ -97,5 +98,21 @@ namespace SignalRWebUI.Controllers
 			return View();
 		}
 
+
+		public async Task<IActionResult> BookingStatusApproved(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var response=await client.GetAsync($"https://localhost:7210/api/Booking/BookingStatusApproved/{id}");
+			return RedirectToAction("Index");
+
+		}
+
+		public async Task<IActionResult> BookingStatusCancaled(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			await client.GetAsync($"https://localhost:7210/api/Booking/BookingStatusCancaled/{id}");
+			return RedirectToAction("Index");
+
+		}
 	}
 }
