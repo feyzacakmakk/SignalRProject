@@ -34,7 +34,8 @@ namespace SignalRApi.Controllers
                 Date = createBookingDto.Date,
                 Phone = createBookingDto.Phone,
                 Mail= createBookingDto.Mail,
-                PersonCount= createBookingDto.PersonCount
+                PersonCount= createBookingDto.PersonCount,
+                Description= createBookingDto.Description
             };
             _bookingService.TAdd(booking);
             return Ok("Rezarvasyon yapıldı.");

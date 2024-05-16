@@ -39,7 +39,7 @@ namespace SignalRWebUI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> CreateBooking(CreateBookingDto createBookingDto)
 		{
-			//başlangıçta true olsun
+			createBookingDto.Description = "Rezervasyon Alındı";
 			var client = _httpClientFactory.CreateClient();
 			//istemci oluşturuyorum
 			var jsonData = JsonConvert.SerializeObject(createBookingDto);

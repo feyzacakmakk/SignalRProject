@@ -35,7 +35,11 @@ namespace SignalRApi.Controllers
                 Mail=createContactDto.Mail,
                 Location=createContactDto.Location,
                 FooterDescription=createContactDto.FooterDescription,
-                PhoneNumber = createContactDto.PhoneNumber
+                PhoneNumber = createContactDto.PhoneNumber,
+                FooterTitle=createContactDto.FooterTitle,
+                OpenDays=createContactDto.OpenDays,
+                OpenDaysDescription=createContactDto.OpenDaysDescription,
+                OpenHours=createContactDto.OpenHours
             });
             return Ok("İletişim bilgisi eklendi");
 
@@ -59,12 +63,17 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateContact(UpdateContactDto updateContactDto)
         {
-            _contactService.TUpdate(new Contact(){ 
-                ContactID=updateContactDto.ContactID,
+            _contactService.TUpdate(new Contact()
+            {
+                ContactID = updateContactDto.ContactID,
                 FooterDescription = updateContactDto.FooterDescription,
                 PhoneNumber = updateContactDto.PhoneNumber,
-                Location=updateContactDto.Location,
-                Mail=updateContactDto.Mail
+                Location = updateContactDto.Location,
+                Mail = updateContactDto.Mail,
+                FooterTitle = updateContactDto.FooterTitle,
+                OpenDays = updateContactDto.OpenDays,
+                OpenDaysDescription = updateContactDto.OpenDaysDescription,
+                OpenHours = updateContactDto.OpenHours
             });
             return Ok("İletişim bilgisi güncellendi");
         }
