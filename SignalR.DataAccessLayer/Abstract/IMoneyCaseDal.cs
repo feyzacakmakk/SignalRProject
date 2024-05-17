@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-    public interface IMoneyCaseDal:IGenericDal<MoneyCase>
+    public interface IMoneyCaseDal:IMessageDal<MoneyCase>
     {
         decimal TotalMoneyCaseAmount();
     }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SignalR.DataAccessLayer.Abstract
+namespace SignalR.BusinessLayer.Abstract
 {
-	public interface IOrderDetailDal:IMessageDal<OrderDetail>
+	public interface IMessageService:IGenericService<Message>
 	{
 	}
 }

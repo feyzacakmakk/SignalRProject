@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-    public interface IBookingDal : IGenericDal<Booking>
+    public interface IBookingDal : IMessageDal<Booking>
     {
         int BookingCount();
         void BookingStatusApproved(int id);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-    public interface IBasketDal:IGenericDal<Basket>
+    public interface IBasketDal:IMessageDal<Basket>
     {
         List<Basket> GetBasketByMenuTableNumber(int id);
         //masa numarasına göre sepeti getir

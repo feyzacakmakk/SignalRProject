@@ -4,13 +4,16 @@
     Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-@*Sitenin Ana sayfası*@
+@*Sitenin Ana sayfası/ defaultcontroller index*@
 
 @await Component.InvokeAsync("_DefaultSliderPartialComponent")
 @await Component.InvokeAsync("_DefaultOfferPartialComponent")
 @await Component.InvokeAsync("_DefaultOurMenuPartialComponent")
 @await Component.InvokeAsync("_DefaultAboutPartialComponent")
 @await Component.InvokeAsync("_DefaultBookATablePartialComponent")
+
+@await Html.PartialAsync("SendMessage.cshtml")
+
 @await Component.InvokeAsync("_DefaultTestimonialPartialComponent")
 
 

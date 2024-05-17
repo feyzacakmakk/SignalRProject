@@ -2,7 +2,7 @@
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-    public interface ICategoryDal : IGenericDal<Category>
+    public interface ICategoryDal : IMessageDal<Category>
     {
         public int CategoryCount();
         int ActiveCategoryCount();

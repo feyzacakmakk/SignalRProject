@@ -39,7 +39,9 @@
                         <p>
                             @item.FooterDescription
                         </p>
-                        <div class="footer_social">
+                        @await Component.InvokeAsync("_UILayoutSocialMediaPartialComponent")
+
+                       @*  <div class="footer_social">
                             <a href="">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </a>
@@ -55,7 +57,7 @@
                             <a href="">
                                 <i class="fa fa-pinterest" aria-hidden="true"></i>
                             </a>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
                 <div class="col-md-4 footer-col">

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.EntityLayer.Entities;
 using SignalRWebUI.Dtos.IdentityDtos;
 
 namespace SignalRWebUI.Controllers
 {
+	[AllowAnonymous] //Proje seviyeindeki bütün kurallardan muaf hale getiriyorum
 	public class LoginController : Controller
 	{
 		private readonly SignInManager<AppUser> _signInManager;
@@ -26,7 +28,7 @@ namespace SignalRWebUI.Controllers
 			var result=await _signInManager.PasswordSignInAsync(loginDto.Username,loginDto.Password,false,false);
 			if (result.Succeeded)
 			{
-				return RedirectToAction("Index","Category");
+				return RedirectToAction("Index","Default");
 			}
 			return View();
 		}

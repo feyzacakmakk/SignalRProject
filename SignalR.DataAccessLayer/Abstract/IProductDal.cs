@@ -2,7 +2,7 @@
 
 namespace SignalR.DataAccessLayer.Abstract
 {
-	public interface IProductDal : IGenericDal<Product>
+	public interface IProductDal : IMessageDal<Product>
     {
         List<Product> GetProductsWithCategories();
         public int ProductCount();
